@@ -3,7 +3,7 @@
 
 | Tactic | Technique | What WannaCry does | SOC watches for |
 |--------|-----------|--------------------|-----------------|
-| **Execution** | Windows Management Instrumentation | Deleting shadow copies to remove amdministrator's ability to restore files. | Execution of wmic.exe with suspicious switches. |
+| **Execution** | Windows Management Instrumentation | Deleting shadow copies to remove amdministrator's ability to restore files. | Execution of `wmic.exe` with suspicious switches. |
 | **Persistence** | Windows Service | Creates the service `mssecsvc2.0` with the display name `Microsoft Security Center (2.0) Service` that auto-starts on boot, keeping malware alive. | Service creation events with suspicious names or temp paths. |
 | **Privilege Escalation** | Windows Service | Use the same service created for persistence, running with SYSTEM privileges to gain full system access. | Service running as SYSTEM; unexpected elevated privileges on suspicious process. |
 | **Stealth** | Hidden Files and Directories | Uses `attrib.exe +h` to mark its files as hidden so they don't appear in normal file browsing. | Abusing of `attrib.exe` command; hidden files in unexpected system locations. |
